@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: Portfolio Post Type Plugin
+Plugin Name: Kawaii Photo Album
 */
 
-function dt_setup_post_type() {
+function kawaii_setup_post_type() {
  
     // Register our "book" custom post type
-    register_post_type( 'portfolio_item', 
+    register_post_type( 'photo_album', 
       array(
         'labels' => array(
-          'name' => __('Portfolio Item'),
-          'singular_name' => __('Portfolio')
+          'name' => __('Photo Album'),
+          'singular_name' => __('Photo')
           ),
        'public' => true,
        'has_archive' => true
@@ -19,23 +19,23 @@ function dt_setup_post_type() {
  
 }
 // make sure the second argument of this function matches the name of the method above
-add_action( 'init', 'dt_setup_post_type' );
+add_action( 'init', 'kawaii_setup_post_type' );
 
 
 // ==================================================================
  
 
 // this will fix any permalink issues that might reult from adding the post type
-function dt_install() {
+function kawaii_install() {
  
     // Trigger our function that registers the custom post type
-    dt_setup_post_types();
+    kawaii_setup_post_type();
  
     // Clear the permalinks after the post type has been registered
     flush_rewrite_rules();
  
 }
-register_activation_hook( __FILE__, 'dt_install' );
+register_activation_hook( __FILE__, 'kawaii_install' );
 
 
 // ==================================================================
